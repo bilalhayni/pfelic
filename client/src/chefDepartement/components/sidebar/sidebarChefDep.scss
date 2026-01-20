@@ -1,68 +1,80 @@
+// Professional Sidebar Styles
+// Modern dark theme navigation
+
+$primary: #4f46e5;
+$primary-light: #6366f1;
+$primary-dark: #4338ca;
+$secondary: #0ea5e9;
+
+$dark-950: #020617;
+$dark-900: #0f172a;
+$dark-800: #1e293b;
+$dark-700: #334155;
+$dark-600: #475569;
+$gray-500: #64748b;
+$gray-400: #94a3b8;
+$gray-300: #cbd5e1;
+$white: #ffffff;
+
 .sidebar {
-  flex: 1;
-  border-right: 1px solid rgba(0, 0, 0, 0.05);
+  width: 280px;
+  min-width: 280px;
   min-height: 100vh;
-  background: #ffffff;
-  box-shadow: 2px 0 16px rgba(0, 0, 0, 0.03);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(180deg, $dark-900 0%, $dark-950 100%);
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  // Custom scrollbar
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $dark-700;
+    border-radius: 2px;
+  }
 
   .top {
-    height: 160px;
+    padding: 32px 24px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    position: relative;
-    overflow: hidden;
-
-    &::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 60%);
-      animation: rotate 25s linear infinite;
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.1) 100%);
-      pointer-events: none;
-    }
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 
     .logo {
-      justify-content: center;
+      display: flex;
       align-items: center;
-      z-index: 2;
-      position: relative;
+      justify-content: center;
 
       img {
-        width: 175px;
-        height: 150px;
-        filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        width: 160px;
+        height: auto;
+        filter: brightness(1.1);
+        transition: all 0.3s ease;
 
         &:hover {
-          transform: scale(1.05) translateY(-4px);
-          filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.4));
+          transform: scale(1.05);
+          filter: brightness(1.2);
         }
       }
     }
   }
 
   hr {
-    height: 0;
-    border: none;
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
-    margin: 20px 0;
+    display: none;
   }
 
   .bottom {
-    padding: 16px 20px;
+    flex: 1;
+    padding: 24px 16px;
 
     ul {
       list-style: none;
@@ -71,15 +83,29 @@
 
       .title {
         font-size: 11px;
-        font-weight: 800;
-        color: #8b92a8;
+        font-weight: 700;
+        color: $gray-500;
         text-transform: uppercase;
         letter-spacing: 1.5px;
-        margin-top: 24px;
-        margin-bottom: 16px;
-        padding-left: 12px;
+        margin: 28px 0 12px 12px;
+        opacity: 0.8;
+
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+
+      li {
+        display: flex;
+        align-items: center;
+        padding: 14px 16px;
+        margin: 4px 0;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.2s ease;
         position: relative;
 
+        // Active indicator
         &::before {
           content: '';
           position: absolute;
@@ -87,132 +113,141 @@
           top: 50%;
           transform: translateY(-50%);
           width: 3px;
-          height: 12px;
-          background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
-          border-radius: 2px;
-        }
-      }
-
-      li {
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-        padding: 14px 16px;
-        margin: 6px 0;
-        border-radius: 14px;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        position: relative;
-        background: transparent;
-
-        &::before {
-          content: '';
-          position: absolute;
-          left: 0;
-          top: 50%;
-          transform: translateY(-50%);
-          width: 0;
-          height: 60%;
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-          border-radius: 0 8px 8px 0;
-          transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        &::after {
-          content: '';
-          position: absolute;
-          inset: 0;
-          border-radius: 14px;
-          background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%);
-          opacity: 0;
-          transition: opacity 0.3s ease;
+          height: 0;
+          background: $primary;
+          border-radius: 0 4px 4px 0;
+          transition: height 0.2s ease;
         }
 
         &:hover {
-          transform: translateX(6px);
-          box-shadow: 0 4px 16px rgba(102, 126, 234, 0.12);
+          background: rgba(255, 255, 255, 0.04);
 
           &::before {
-            width: 5px;
-          }
-
-          &::after {
-            opacity: 1;
+            height: 24px;
           }
 
           .icon {
-            color: #667eea;
-            transform: scale(1.15) rotate(-8deg);
+            color: $primary-light;
+            transform: translateX(2px);
           }
 
           span {
-            color: #1a202c;
-            font-weight: 700;
+            color: $white;
           }
         }
 
         .icon {
-          font-size: 24px;
-          color: #667eea;
-          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-          min-width: 32px;
-          z-index: 1;
-          position: relative;
+          font-size: 22px;
+          color: $gray-400;
+          margin-right: 14px;
+          transition: all 0.2s ease;
+          min-width: 24px;
         }
 
         span {
-          font-size: 15px;
+          font-size: 14px;
+          font-weight: 500;
+          color: $gray-400;
+          transition: all 0.2s ease;
+          white-space: nowrap;
+        }
+      }
+
+      // Active state for current page
+      a.active li,
+      li.active {
+        background: rgba(79, 70, 229, 0.15);
+
+        &::before {
+          height: 24px;
+          background: $primary-light;
+        }
+
+        .icon {
+          color: $primary-light;
+        }
+
+        span {
+          color: $white;
           font-weight: 600;
-          color: #6c757d;
-          margin-left: 18px;
-          transition: all 0.3s ease;
-          z-index: 1;
-          position: relative;
         }
       }
     }
   }
 }
 
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
+// Responsive styles
+@media (max-width: 1200px) {
+  .sidebar {
+    width: 260px;
+    min-width: 260px;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media (max-width: 992px) {
+  .sidebar {
+    width: 240px;
+    min-width: 240px;
+
+    .top {
+      padding: 24px 20px;
+
+      .logo img {
+        width: 140px;
+      }
+    }
+
+    .bottom {
+      padding: 20px 12px;
+
+      ul li {
+        padding: 12px 14px;
+
+        .icon {
+          font-size: 20px;
+        }
+
+        span {
+          font-size: 13px;
+        }
+      }
+    }
   }
 }
 
 @media (max-width: 768px) {
   .sidebar {
+    width: 220px;
+    min-width: 220px;
+
     .top {
-      height: 120px;
+      padding: 20px 16px;
 
       .logo img {
-        width: 140px;
-        height: 120px;
+        width: 120px;
       }
     }
 
     .bottom {
-      padding: 12px 16px;
+      padding: 16px 10px;
 
       ul {
         .title {
           font-size: 10px;
-          margin-top: 16px;
-          margin-bottom: 12px;
+          margin: 20px 0 10px 10px;
         }
 
         li {
-          padding: 12px 14px;
-          margin: 4px 0;
+          padding: 10px 12px;
+          border-radius: 10px;
 
           .icon {
-            font-size: 22px;
+            font-size: 18px;
+            margin-right: 12px;
           }
 
           span {
-            font-size: 14px;
+            font-size: 12px;
           }
         }
       }

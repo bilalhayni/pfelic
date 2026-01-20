@@ -71,7 +71,7 @@ const Widget = ({ type }) => {
   switch (type) {
     case "prof":
       data = {
-        title: "Professeurs-es",
+        title: "Professeurs",
         link: "Voir tous les professeurs",
         go: "/chefdepartement/prof",
         number: numProf,
@@ -79,8 +79,8 @@ const Widget = ({ type }) => {
           <SchoolIcon
             className="icon"
             style={{
-              color: "#ef4444",
-              backgroundColor: "rgba(239, 68, 68, 0.15)",
+              color: "#4f46e5",
+              backgroundColor: "rgba(79, 70, 229, 0.12)",
             }}
           />
         ),
@@ -88,16 +88,16 @@ const Widget = ({ type }) => {
       break;
     case "student":
       data = {
-        title: "Étudiants-es",
-        link: "Voir tous les étudiants-es",
+        title: "Étudiants",
+        link: "Voir tous les étudiants",
         go: "/chefdepartement/student",
         number: numStd,
         icon: (
           <PersonOutlinedIcon
             className="icon"
             style={{
-              backgroundColor: "rgba(251, 191, 36, 0.15)",
-              color: "#f59e0b",
+              backgroundColor: "rgba(14, 165, 233, 0.12)",
+              color: "#0ea5e9",
             }}
           />
         ),
@@ -105,14 +105,14 @@ const Widget = ({ type }) => {
       break;
     case "pfe":
       data = {
-        title: "PFE's",
-        link: "Voir tous les PFE's",
+        title: "Projets PFE",
+        link: "Voir tous les PFE",
         go: "/chefdepartement/pfe",
         number: numPfe,
         icon: (
           <BusinessCenterIcon
             className="icon"
-            style={{ backgroundColor: "rgba(16, 185, 129, 0.15)", color: "#10b981" }}
+            style={{ backgroundColor: "rgba(16, 185, 129, 0.12)", color: "#10b981" }}
           />
         ),
       };
@@ -128,7 +128,7 @@ const Widget = ({ type }) => {
           <DomainIcon
             className="icon"
             style={{
-              backgroundColor: "rgba(139, 92, 246, 0.15)",
+              backgroundColor: "rgba(139, 92, 246, 0.12)",
               color: "#8b5cf6",
             }}
           />
