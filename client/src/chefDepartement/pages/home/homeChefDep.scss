@@ -1,54 +1,64 @@
+// Professional Dashboard Theme - Chef Department
+// Modern, clean, enterprise-grade design
+
+$primary: #4f46e5;
+$primary-light: #6366f1;
+$primary-dark: #4338ca;
+$secondary: #0ea5e9;
+$success: #10b981;
+$warning: #f59e0b;
+$danger: #ef4444;
+$purple: #8b5cf6;
+
+$dark-900: #0f172a;
+$dark-800: #1e293b;
+$dark-700: #334155;
+$dark-600: #475569;
+$gray-500: #64748b;
+$gray-400: #94a3b8;
+$gray-300: #cbd5e1;
+$gray-200: #e2e8f0;
+$gray-100: #f1f5f9;
+$white: #ffffff;
+
 .homeChefDep {
   display: flex;
   min-height: 100vh;
-  background: #f8fafc;
-  position: relative;
-
-  &::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 300px;
-    background: linear-gradient(180deg,
-      rgba(102, 126, 234, 0.05) 0%,
-      rgba(118, 75, 162, 0.03) 50%,
-      transparent 100%);
-    pointer-events: none;
-    z-index: 0;
-  }
+  background: linear-gradient(135deg, $gray-100 0%, #e0e7ff 100%);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
   .homeContainerChefDep {
-    flex: 6;
-    padding: 32px 40px;
-    overflow-y: auto;
-    position: relative;
-    z-index: 1;
+    flex: 1;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
 
     .widgetsChefDep {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 28px;
-      margin-bottom: 40px;
-      animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      padding: 32px 48px;
+      margin-bottom: 0;
+      animation: slideUp 0.5s ease-out;
     }
 
     .chartsChefDep {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
-      gap: 28px;
-      animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-      animation-delay: 0.3s;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      padding: 0 48px 48px;
+      animation: slideUp 0.6s ease-out;
+      animation-delay: 0.1s;
       animation-fill-mode: both;
     }
   }
 }
 
-@keyframes fadeInUp {
+@keyframes slideUp {
   from {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
@@ -56,55 +66,79 @@
   }
 }
 
-// Tablet breakpoint
-@media (max-width: 1400px) {
-  .homeChefDep .homeContainerChefDep {
-    padding: 28px 32px;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+// Large screens
+@media (max-width: 1600px) {
+  .homeChefDep .homeContainerChefDep {
     .widgetsChefDep {
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+// Tablet
+@media (max-width: 1200px) {
+  .homeChefDep .homeContainerChefDep {
+    .widgetsChefDep {
+      grid-template-columns: repeat(2, 1fr);
       gap: 20px;
+      padding: 24px 32px;
     }
 
     .chartsChefDep {
       grid-template-columns: 1fr;
       gap: 20px;
+      padding: 0 32px 32px;
     }
   }
 }
 
-// Mobile breakpoint
+// Mobile
 @media (max-width: 768px) {
-  .homeChefDep {
-    &::before {
-      height: 200px;
+  .homeChefDep .homeContainerChefDep {
+    .widgetsChefDep {
+      grid-template-columns: 1fr;
+      gap: 16px;
+      padding: 20px;
+      margin-bottom: 0;
     }
 
-    .homeContainerChefDep {
-      padding: 20px 16px;
-
-      .widgetsChefDep {
-        grid-template-columns: 1fr;
-        gap: 16px;
-        margin-bottom: 28px;
-      }
-
-      .chartsChefDep {
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
+    .chartsChefDep {
+      grid-template-columns: 1fr;
+      gap: 16px;
+      padding: 0 20px 24px;
     }
   }
 }
 
-// Small mobile breakpoint
+// Small mobile
 @media (max-width: 480px) {
   .homeChefDep .homeContainerChefDep {
-    padding: 16px 12px;
-
     .widgetsChefDep,
     .chartsChefDep {
+      padding: 16px;
       gap: 12px;
+    }
+
+    .chartsChefDep {
+      padding-bottom: 20px;
     }
   }
 }

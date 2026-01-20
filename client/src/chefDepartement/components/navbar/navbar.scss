@@ -1,25 +1,33 @@
+// Professional Navbar Styles
+// Clean, minimal top navigation
+
+$primary: #4f46e5;
+$primary-light: #6366f1;
+
+$dark-900: #0f172a;
+$dark-800: #1e293b;
+$gray-500: #64748b;
+$gray-400: #94a3b8;
+$gray-200: #e2e8f0;
+$gray-100: #f1f5f9;
+$white: #ffffff;
+
 .navbar {
   height: 80px;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   display: flex;
   align-items: center;
-  font-size: 14px;
-  color: #555;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02), 0 4px 16px rgba(0, 0, 0, 0.03);
   position: sticky;
   top: 0;
   z-index: 100;
-  backdrop-filter: blur(20px) saturate(180%);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
-  &:hover {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.05);
-  }
+  transition: all 0.3s ease;
 
   .wrapper {
     width: 100%;
-    padding: 16px 40px;
+    padding: 0 48px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -27,100 +35,84 @@
     .left {
       display: flex;
       align-items: center;
-      padding: 10px 20px;
-      font-size: 19px;
-      font-weight: 800;
-      color: transparent;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      background-clip: text;
-      -webkit-background-clip: text;
-      letter-spacing: -0.8px;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
+      gap: 12px;
 
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 20px;
-        right: 20px;
-        height: 2px;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        transform: scaleX(0);
-        transition: transform 0.3s ease;
-      }
+      font-size: 18px;
+      font-weight: 700;
+      color: $dark-900;
+      letter-spacing: -0.3px;
 
-      &:hover {
-        transform: translateY(-2px);
-
-        &::after {
-          transform: scaleX(1);
-        }
+      // Welcome badge
+      &::before {
+        content: 'Bienvenue';
+        font-size: 12px;
+        font-weight: 600;
+        color: $primary;
+        background: rgba(79, 70, 229, 0.1);
+        padding: 6px 12px;
+        border-radius: 20px;
+        letter-spacing: 0;
       }
     }
 
     .items {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 16px;
 
       .item {
         display: flex;
         align-items: center;
         position: relative;
         cursor: pointer;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        padding: 8px;
-        border-radius: 12px;
-
-        &:hover {
-          transform: translateY(-2px);
-          background: rgba(102, 126, 234, 0.06);
-        }
+        transition: all 0.2s ease;
 
         .icon {
-          font-size: 26px;
-          color: #6c757d;
-          transition: all 0.3s ease;
+          font-size: 24px;
+          color: $gray-500;
+          transition: all 0.2s ease;
 
           &:hover {
-            color: #667eea;
+            color: $primary;
           }
         }
 
         .avatar {
-          width: 48px;
-          height: 48px;
-          border-radius: 50%;
-          border: 3px solid #ffffff;
-          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.04);
-          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          width: 44px;
+          height: 44px;
+          border-radius: 12px;
+          border: 2px solid $white;
+          box-shadow:
+            0 2px 8px rgba(0, 0, 0, 0.08),
+            0 0 0 1px rgba(0, 0, 0, 0.04);
+          transition: all 0.3s ease;
           object-fit: cover;
-          cursor: pointer;
 
           &:hover {
-            border-color: #667eea;
-            box-shadow: 0 6px 24px rgba(102, 126, 234, 0.3), 0 0 0 2px rgba(102, 126, 234, 0.2);
-            transform: scale(1.08);
+            transform: scale(1.05);
+            box-shadow:
+              0 4px 16px rgba(79, 70, 229, 0.2),
+              0 0 0 2px rgba(79, 70, 229, 0.2);
           }
         }
 
         .counter {
-          width: 20px;
+          position: absolute;
+          top: -4px;
+          right: -4px;
+          min-width: 20px;
           height: 20px;
           background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-          border-radius: 50%;
-          color: white;
+          border-radius: 10px;
+          color: $white;
+          font-size: 11px;
+          font-weight: 700;
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 11px;
-          font-weight: 700;
-          position: absolute;
-          top: 4px;
-          right: 4px;
-          box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4), 0 0 0 2px #ffffff;
-          animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+          padding: 0 6px;
+          box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4);
+          animation: pulse 2s infinite;
         }
       }
     }
@@ -130,11 +122,16 @@
 @keyframes pulse {
   0%, 100% {
     transform: scale(1);
-    opacity: 1;
   }
   50% {
-    transform: scale(1.15);
-    opacity: 0.9;
+    transform: scale(1.1);
+  }
+}
+
+// Responsive styles
+@media (max-width: 1200px) {
+  .navbar .wrapper {
+    padding: 0 32px;
   }
 }
 
@@ -143,20 +140,54 @@
     height: 70px;
 
     .wrapper {
-      padding: 12px 20px;
+      padding: 0 20px;
 
       .left {
-        font-size: 17px;
-        padding: 8px 12px;
+        font-size: 16px;
+
+        &::before {
+          display: none;
+        }
       }
 
       .items {
         gap: 12px;
 
-        .item .avatar {
-          width: 40px;
-          height: 40px;
+        .item {
+          .avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+          }
+
+          .icon {
+            font-size: 22px;
+          }
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    height: 64px;
+
+    .wrapper {
+      padding: 0 16px;
+
+      .left {
+        font-size: 14px;
+        max-width: 180px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .items .item .avatar {
+        width: 34px;
+        height: 34px;
+        border-radius: 8px;
       }
     }
   }

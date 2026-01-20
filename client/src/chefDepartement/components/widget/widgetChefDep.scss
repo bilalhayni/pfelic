@@ -1,122 +1,139 @@
+// Professional Widget Card Styles
+// Modern stat cards with clean design
+
+$primary: #4f46e5;
+$primary-light: #6366f1;
+$secondary: #0ea5e9;
+$success: #10b981;
+$warning: #f59e0b;
+$danger: #ef4444;
+$purple: #8b5cf6;
+
+$dark-900: #0f172a;
+$dark-800: #1e293b;
+$gray-500: #64748b;
+$gray-400: #94a3b8;
+$gray-200: #e2e8f0;
+$white: #ffffff;
+
 .widgetChefDep {
   display: flex;
   justify-content: space-between;
-  flex: 1;
-  padding: 28px;
-  background: #ffffff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 10px 40px rgba(0, 0, 0, 0.04);
-  border-radius: 24px;
-  min-height: 160px;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  align-items: center;
+  padding: 28px 32px;
+  background: $white;
+  border-radius: 20px;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 4px 12px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border: 1px solid rgba(0, 0, 0, 0.04);
   position: relative;
   overflow: hidden;
-  backdrop-filter: blur(20px);
+  min-height: 140px;
 
+  // Subtle gradient overlay
   &::before {
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
     right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at top right, rgba(102, 126, 234, 0.03) 0%, transparent 60%);
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle at top right, rgba(79, 70, 229, 0.04) 0%, transparent 70%);
     pointer-events: none;
+    transition: opacity 0.3s ease;
   }
 
+  // Bottom accent line
   &::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
-    right: 0;
+    width: 0;
     height: 3px;
-    background: linear-gradient(90deg, transparent 0%, currentColor 50%, transparent 100%);
-    transform: scaleX(0);
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    background: linear-gradient(90deg, $primary 0%, $purple 100%);
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   &:hover {
-    transform: translateY(-12px) scale(1.02);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(102, 126, 234, 0.1);
-    border-color: rgba(102, 126, 234, 0.2);
+    transform: translateY(-8px);
+    box-shadow:
+      0 4px 8px rgba(0, 0, 0, 0.04),
+      0 16px 40px rgba(79, 70, 229, 0.12);
+    border-color: rgba(79, 70, 229, 0.1);
 
     &::after {
-      transform: scaleX(1);
+      width: 100%;
+    }
+
+    .rightWidgetChefDep .icon {
+      transform: scale(1.1);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     }
 
     .linkChefDep {
-      color: currentColor;
-      transform: translateX(4px);
+      color: $primary;
 
       &::after {
+        transform: translateX(4px);
         opacity: 1;
-        transform: translateX(0);
       }
     }
-
-    .icon {
-      transform: scale(1.15) rotate(-5deg);
-      filter: brightness(1.1);
-    }
-  }
-
-  .leftWidgetChefDep,
-  .rightWidgetChefDep {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
   }
 
   .leftWidgetChefDep {
-    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
     z-index: 1;
   }
 
   .rightWidgetChefDep {
-    align-items: flex-end;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
     z-index: 1;
   }
 
   .titleChefDepWidget {
-    font-weight: 700;
     font-size: 13px;
-    color: #8b92a8;
+    font-weight: 600;
+    color: $gray-500;
     text-transform: uppercase;
-    letter-spacing: 1.2px;
-    margin-bottom: 16px;
-    opacity: 0.9;
+    letter-spacing: 0.8px;
   }
 
   .counterChefDep {
-    font-size: 48px;
+    font-size: 42px;
     font-weight: 800;
-    color: #1a202c;
+    color: $dark-900;
     line-height: 1;
-    margin: 12px 0;
-    letter-spacing: -1px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    letter-spacing: -1.5px;
+    margin: 4px 0;
+    font-variant-numeric: tabular-nums;
   }
 
   .linkChefDep {
-    width: max-content;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
+    color: $gray-400;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    text-decoration: none;
+    transition: all 0.25s ease;
     display: inline-flex;
     align-items: center;
-    position: relative;
-    padding-right: 20px;
+    gap: 4px;
+    margin-top: 4px;
 
     &::after {
-      content: '→';
-      position: absolute;
-      right: 0;
+      content: '\2192';
+      font-size: 14px;
       opacity: 0;
-      transform: translateX(-8px);
-      transition: all 0.3s ease;
+      transform: translateX(-4px);
+      transition: all 0.25s ease;
     }
 
     a {
@@ -125,13 +142,75 @@
       display: inline-flex;
       align-items: center;
     }
+
+    &:hover a {
+      color: $primary;
+    }
   }
 
   .icon {
-    font-size: 64px !important;
+    font-size: 48px !important;
     padding: 16px;
-    border-radius: 20px;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+}
+
+// Responsive styles
+@media (max-width: 1400px) {
+  .widgetChefDep {
+    padding: 24px 28px;
+
+    .counterChefDep {
+      font-size: 38px;
+    }
+
+    .icon {
+      font-size: 44px !important;
+      padding: 14px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .widgetChefDep {
+    padding: 20px 24px;
+    min-height: 120px;
+    border-radius: 16px;
+
+    .titleChefDepWidget {
+      font-size: 12px;
+    }
+
+    .counterChefDep {
+      font-size: 32px;
+    }
+
+    .linkChefDep {
+      font-size: 12px;
+    }
+
+    .icon {
+      font-size: 40px !important;
+      padding: 12px;
+      border-radius: 14px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .widgetChefDep {
+    padding: 18px 20px;
+
+    .counterChefDep {
+      font-size: 28px;
+    }
+
+    .icon {
+      font-size: 36px !important;
+      padding: 10px;
+      border-radius: 12px;
+    }
   }
 }
