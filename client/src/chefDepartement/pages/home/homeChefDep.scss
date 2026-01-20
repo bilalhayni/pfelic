@@ -1,91 +1,70 @@
-// Professional Dashboard Theme - Chef Department
-// Modern, clean, enterprise-grade design
+// Professional Dashboard Layout
+// Matches MASI Labo template design
 
-$primary: #4f46e5;
-$primary-light: #6366f1;
-$primary-dark: #4338ca;
-$secondary: #0ea5e9;
-$success: #10b981;
-$warning: #f59e0b;
-$danger: #ef4444;
-$purple: #8b5cf6;
-
-$dark-900: #0f172a;
-$dark-800: #1e293b;
-$dark-700: #334155;
-$dark-600: #475569;
-$gray-500: #64748b;
-$gray-400: #94a3b8;
-$gray-300: #cbd5e1;
-$gray-200: #e2e8f0;
-$gray-100: #f1f5f9;
-$white: #ffffff;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 .homeChefDep {
   display: flex;
   min-height: 100vh;
-  background: linear-gradient(135deg, $gray-100 0%, #e0e7ff 100%);
+  background: #f9fafb;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
   .homeContainerChefDep {
     flex: 1;
-    padding: 0;
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
 
+    // Content area below navbar
+    .contentArea {
+      flex: 1;
+      padding: 32px;
+      max-width: 1400px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    // Welcome section
+    .welcomeSection {
+      margin-bottom: 32px;
+
+      .welcomeTitle {
+        font-size: 24px;
+        font-weight: 600;
+        color: #111827;
+        margin: 0 0 8px 0;
+
+        span {
+          color: #3b82f6;
+        }
+      }
+
+      .welcomeSubtitle {
+        font-size: 14px;
+        color: #6b7280;
+        margin: 0;
+      }
+    }
+
+    // Stats grid
     .widgetsChefDep {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 24px;
-      padding: 32px 48px;
-      margin-bottom: 0;
-      animation: slideUp 0.5s ease-out;
+      margin-bottom: 32px;
     }
 
+    // Charts/Activity grid
     .chartsChefDep {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 24px;
-      padding: 0 48px 48px;
-      animation: slideUp 0.6s ease-out;
-      animation-delay: 0.1s;
-      animation-fill-mode: both;
     }
   }
 }
 
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-}
-
-// Large screens
-@media (max-width: 1600px) {
+// Responsive styles
+@media (max-width: 1400px) {
   .homeChefDep .homeContainerChefDep {
     .widgetsChefDep {
       grid-template-columns: repeat(2, 1fr);
@@ -93,52 +72,66 @@ $white: #ffffff;
   }
 }
 
-// Tablet
-@media (max-width: 1200px) {
+@media (max-width: 1024px) {
   .homeChefDep .homeContainerChefDep {
-    .widgetsChefDep {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-      padding: 24px 32px;
+    .contentArea {
+      padding: 24px;
     }
 
     .chartsChefDep {
       grid-template-columns: 1fr;
-      gap: 20px;
-      padding: 0 32px 32px;
     }
   }
 }
 
-// Mobile
 @media (max-width: 768px) {
   .homeChefDep .homeContainerChefDep {
+    .contentArea {
+      padding: 20px 16px;
+    }
+
+    .welcomeSection {
+      margin-bottom: 24px;
+
+      .welcomeTitle {
+        font-size: 20px;
+      }
+
+      .welcomeSubtitle {
+        font-size: 13px;
+      }
+    }
+
     .widgetsChefDep {
       grid-template-columns: 1fr;
       gap: 16px;
-      padding: 20px;
-      margin-bottom: 0;
+      margin-bottom: 24px;
     }
 
     .chartsChefDep {
       grid-template-columns: 1fr;
       gap: 16px;
-      padding: 0 20px 24px;
     }
   }
 }
 
-// Small mobile
 @media (max-width: 480px) {
   .homeChefDep .homeContainerChefDep {
-    .widgetsChefDep,
-    .chartsChefDep {
-      padding: 16px;
-      gap: 12px;
+    .contentArea {
+      padding: 16px 12px;
     }
 
+    .welcomeSection {
+      margin-bottom: 20px;
+
+      .welcomeTitle {
+        font-size: 18px;
+      }
+    }
+
+    .widgetsChefDep,
     .chartsChefDep {
-      padding-bottom: 20px;
+      gap: 12px;
     }
   }
 }
