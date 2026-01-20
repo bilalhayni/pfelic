@@ -72,15 +72,16 @@ const Widget = ({ type }) => {
     case "prof":
       data = {
         title: "Professeurs",
-        link: "Voir tous les professeurs",
+        description: "Membres actifs",
+        link: "Voir tous",
         go: "/chefdepartement/prof",
         number: numProf,
         icon: (
           <SchoolIcon
             className="icon"
             style={{
-              color: "#4f46e5",
-              backgroundColor: "rgba(79, 70, 229, 0.12)",
+              color: "#3b82f6",
+              backgroundColor: "rgba(59, 130, 246, 0.1)",
             }}
           />
         ),
@@ -89,15 +90,16 @@ const Widget = ({ type }) => {
     case "student":
       data = {
         title: "Étudiants",
-        link: "Voir tous les étudiants",
+        description: "Inscrits en PFE",
+        link: "Voir tous",
         go: "/chefdepartement/student",
         number: numStd,
         icon: (
           <PersonOutlinedIcon
             className="icon"
             style={{
-              backgroundColor: "rgba(14, 165, 233, 0.12)",
-              color: "#0ea5e9",
+              backgroundColor: "rgba(245, 158, 11, 0.1)",
+              color: "#f59e0b",
             }}
           />
         ),
@@ -106,13 +108,14 @@ const Widget = ({ type }) => {
     case "pfe":
       data = {
         title: "Projets PFE",
-        link: "Voir tous les PFE",
+        description: "Actifs & terminés",
+        link: "Voir tous",
         go: "/chefdepartement/pfe",
         number: numPfe,
         icon: (
           <BusinessCenterIcon
             className="icon"
-            style={{ backgroundColor: "rgba(16, 185, 129, 0.12)", color: "#10b981" }}
+            style={{ backgroundColor: "rgba(16, 185, 129, 0.1)", color: "#10b981" }}
           />
         ),
       };
@@ -120,15 +123,15 @@ const Widget = ({ type }) => {
     case "domaine":
       data = {
         title: "Domaines",
-        isMoney: true,
-        link: "Voir tous les domaines",
+        description: "Spécialités PFE",
+        link: "Voir tous",
         go: "/chefdepartement/domaine",
         number: numDom,
         icon: (
           <DomainIcon
             className="icon"
             style={{
-              backgroundColor: "rgba(139, 92, 246, 0.12)",
+              backgroundColor: "rgba(139, 92, 246, 0.1)",
               color: "#8b5cf6",
             }}
           />
@@ -140,16 +143,14 @@ const Widget = ({ type }) => {
   }
   return (
     <div className="widgetChefDep">
-      <div className="leftWidgetChefDep">
+      <div className="rightWidgetChefDep">
         <span className="titleChefDepWidget">{data.title}</span>
-        <span className="counterChefDep">{data.number}</span>
-        <span className="linkChefDep">
-          <Link to={data.go} style={{ textDecoration: "none" }}>
-            {data.link}
-          </Link>
-        </span>
+        {data.icon}
       </div>
-      <div className="rightWidgetChefDep">{data.icon}</div>
+      <div className="leftWidgetChefDep">
+        <span className="counterChefDep">{data.number}</span>
+        <span className="linkChefDep">{data.description}</span>
+      </div>
     </div>
   );
 };

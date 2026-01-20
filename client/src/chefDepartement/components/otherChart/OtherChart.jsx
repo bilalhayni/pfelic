@@ -4,6 +4,9 @@ import "chart.js/auto";
 import { useEffect, useState } from "react";
 import Axios from "axios";
 import Cookies from "js-cookie";
+import { Link } from "react-router-dom";
+import DonutLargeIcon from "@mui/icons-material/DonutLarge";
+
 const OtherChart = () => {
   const id = Cookies.get("filId");
 
@@ -21,8 +24,6 @@ const OtherChart = () => {
     };
   }, [id]);
 
-  console.log(profList);
-
   const data = {
     labels: profList.map((data) => data.avancement),
     datasets: [
@@ -30,29 +31,52 @@ const OtherChart = () => {
         label: "Avancements",
         data: profList.map((data) => data.num),
         backgroundColor: [
-          "#0ea5e9",
-          "#14b8a6",
-          "#4f46e5",
+          "#06b6d4",
+          "#10b981",
+          "#3b82f6",
           "#8b5cf6",
           "#f59e0b",
           "#ef4444",
         ],
         borderColor: "#ffffff",
-        borderWidth: 3,
-        hoverOffset: 8,
+        borderWidth: 2,
+        hoverOffset: 6,
       },
     ],
   };
+
+  const options = {
+    plugins: {
+      legend: {
+        position: "bottom",
+        labels: {
+          padding: 16,
+          usePointStyle: true,
+          font: {
+            size: 12,
+            family: "'Inter', sans-serif",
+          },
+        },
+      },
+    },
+    cutout: "65%",
+    maintainAspectRatio: true,
+  };
+
   return (
     <div className="otherChart">
       <div className="top">
         <div className="title">
-          <h3>L'avancements de tous les PFE's</h3>
+          <DonutLargeIcon className="cardIcon" />
+          <h3>Tous les PFE's - Avancement</h3>
         </div>
+        <Link to="/chefdepartement/pfe" className="viewAllBtn">
+          Voir tous
+        </Link>
       </div>
       <div className="bottom">
         <div className="donut">
-          <Doughnut data={data} />
+          <Doughnut data={data} options={options} />
         </div>
       </div>
     </div>
