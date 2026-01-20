@@ -30,18 +30,21 @@ const OtherChart = () => {
         label: "Avancements",
         data: profList.map((data) => data.num),
         backgroundColor: [
-          "rgba(75,192,192,1)",
-          "#ecf0f1",
-          "#50AF95",
-          "#f3ba2f",
+          "#667eea",
+          "#764ba2",
+          "#f093fb",
+          "#4facfe",
+          "#43e97b",
+          "#fa709a",
         ],
-        borderColor: "black",
-        borderWidth: 2,
+        borderColor: "#ffffff",
+        borderWidth: 3,
+        hoverOffset: 8,
       },
     ],
   };
   return (
-    <div className="donutChart">
+    <div className="otherChart">
       <div className="top">
         <div className="title">
           <h3>L'avancements de tous les PFE's</h3>

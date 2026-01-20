@@ -79,8 +79,8 @@ const Widget = ({ type }) => {
           <SchoolIcon
             className="icon"
             style={{
-              color: "crimson",
-              backgroundColor: "rgba(255, 0, 0, 0.2)",
+              color: "#ef4444",
+              backgroundColor: "rgba(239, 68, 68, 0.15)",
             }}
           />
         ),
@@ -96,8 +96,8 @@ const Widget = ({ type }) => {
           <PersonOutlinedIcon
             className="icon"
             style={{
-              backgroundColor: "rgba(218, 165, 32, 0.2)",
-              color: "goldenrod",
+              backgroundColor: "rgba(251, 191, 36, 0.15)",
+              color: "#f59e0b",
             }}
           />
         ),
@@ -112,7 +112,7 @@ const Widget = ({ type }) => {
         icon: (
           <BusinessCenterIcon
             className="icon"
-            style={{ backgroundColor: "rgba(0, 128, 0, 0.2)", color: "green" }}
+            style={{ backgroundColor: "rgba(16, 185, 129, 0.15)", color: "#10b981" }}
           />
         ),
       };
@@ -128,8 +128,8 @@ const Widget = ({ type }) => {
           <DomainIcon
             className="icon"
             style={{
-              backgroundColor: "rgba(128, 0, 128, 0.2)",
-              color: "purple",
+              backgroundColor: "rgba(139, 92, 246, 0.15)",
+              color: "#8b5cf6",
             }}
           />
         ),
