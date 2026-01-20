@@ -1,26 +1,46 @@
 .homeChefDep {
   display: flex;
   min-height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+  background: #f8fafc;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 300px;
+    background: linear-gradient(180deg,
+      rgba(102, 126, 234, 0.05) 0%,
+      rgba(118, 75, 162, 0.03) 50%,
+      transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
 
   .homeContainerChefDep {
     flex: 6;
-    padding: 24px;
+    padding: 32px 40px;
     overflow-y: auto;
+    position: relative;
+    z-index: 1;
 
     .widgetsChefDep {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-      margin-bottom: 32px;
-      animation: fadeInUp 0.6s ease-out;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+      margin-bottom: 40px;
+      animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .chartsChefDep {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-      gap: 24px;
-      animation: fadeInUp 0.8s ease-out;
+      grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+      gap: 28px;
+      animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      animation-delay: 0.3s;
+      animation-fill-mode: both;
     }
   }
 }
@@ -28,7 +48,7 @@
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(40px);
   }
   to {
     opacity: 1;
@@ -36,26 +56,54 @@
   }
 }
 
-@media (max-width: 1200px) {
+// Tablet breakpoint
+@media (max-width: 1400px) {
   .homeChefDep .homeContainerChefDep {
+    padding: 28px 32px;
+
     .widgetsChefDep {
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
     }
 
     .chartsChefDep {
       grid-template-columns: 1fr;
-      gap: 16px;
+      gap: 20px;
     }
   }
 }
 
+// Mobile breakpoint
 @media (max-width: 768px) {
-  .homeChefDep .homeContainerChefDep {
-    padding: 16px;
+  .homeChefDep {
+    &::before {
+      height: 200px;
+    }
 
-    .widgetsChefDep {
-      grid-template-columns: 1fr;
+    .homeContainerChefDep {
+      padding: 20px 16px;
+
+      .widgetsChefDep {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-bottom: 28px;
+      }
+
+      .chartsChefDep {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+    }
+  }
+}
+
+// Small mobile breakpoint
+@media (max-width: 480px) {
+  .homeChefDep .homeContainerChefDep {
+    padding: 16px 12px;
+
+    .widgetsChefDep,
+    .chartsChefDep {
       gap: 12px;
     }
   }
